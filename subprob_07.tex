@@ -8,6 +8,7 @@
 \usepackage{color}
 \usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
 \usepackage{graphicx}
+\usepackage{verbatim}
 \usepackage[breaklinks]{hyperref}
 
 \tabulinesep=0.75ex % Espaçamento interno das tabelas
@@ -82,7 +83,7 @@
             Na nossa linguagem usaremos ambos, funções e procedimentos, com o objetivo de deixar claro ambos os conceitos para facilitar o aprendizado dos nossos usuários. Definindo sintaticamente uma função, temos:
 
             Ambas são abstrações de processo (subprogramas) e se eu vier perguntar qual deles se assemelha a um comando (???): procedimento
-            
+            \begin{comment}
             <function> 	::= function id "(" <parameters_list> ")" "{"
             <stmts> 
             <return> 
@@ -93,7 +94,7 @@
             <procedure>	::= procedure id "(" <parameters_list> ")" "{"
             			<stmts>
             			"}"
-            
+            \end{comment}
             A diferença conceitual entre procedimento e função reside na ausência de retorno nos procedimentos, normalmente os procedimentos alteram o programa principal.
 
             \item
@@ -107,7 +108,8 @@
             Sim, ela utilizará o método de protótipo.
             \item
             Não teremos subprogramas com sobrecarga ou genéricos.
-
+	
+			\begin{comment}
             Com sobrecarga:
             
             	int soma(int a, int b)
@@ -147,7 +149,7 @@
             {
             return a^b;
             }
-            
+            \end{comment}
             	Final das contas vou ter que lembrar do nome de 3funções
             
             	Para códigos gigantes com centenas de funções, isso faz diferença .-.
