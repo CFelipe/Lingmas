@@ -169,7 +169,17 @@
         Nós teremos passagem por valor, implementado por cópia, e passagem por referência.
 
         \item
-        Sim, ela utilizará o método de protótipo.
+        Sim, ela utilizará o método de protótipo, onde os tipos dos parâmetros são incluindos dentro da lista de parâmetros, e por meio deste o tipo de um parâmetro é checado. A ideia de que a checagem de tipo não será implementada.
+        Exemplo de prototipagem:
+        \begin{lstlisting}[language=C]
+            int function1 (int par1, int par2, float par3) {
+            	...
+            }
+        \end{lstlisting}
+        Exemplo de prototipagem sem checagem de tipo (C99 e C++):
+        \begin{lstlisting}[language=C]
+        	int printf(const char* format_string, . . .);
+        \end{lstlisting}
 
         \item
         Subprograma genérico é um tipo de subprograma que funciona para diferentes tipos de entrada em diferentes ativações, é implementado com funções de template,  definindo um grupo de funções que pode ser gerado. Cabe ao compilador decidir de acordo com os parâmetros no momento da chamada da função qual exemplar do grupo será usado.
