@@ -172,7 +172,7 @@
         Sim, ela utilizará o método de protótipo.
 
         \item
-        Não teremos subprogramas com sobrecarga ou genéricos.
+        Não teremos subprogramas genéricos, mas teremos subprogramas com sobrecarga.
 
         \begin{comment}
             Com sobrecarga:
@@ -210,15 +210,14 @@
         \end{comment}
 
         \item
-        (A única coisa que encontrei sobre compilação separada/independente
-        é que ela é utilizada em  C/C++, como o livro comenta, Fortran II.
-        Basicamente, compilação separada é poder compilar o código em
-        partes (desde que suas dependências estejam inclusas na sua própria
-        compilação) e então juntar, como exemplo os arquivos .o em C/C++)
-
-        (Resumindo: sim, porque não? É muito melhor de se trabalhar assim,
-        e não afeta a dificuldade da linguagem)
-
+        (Compilação separada: as unidades de compilação podem ser compiladas em tempos diferentes, mas elas não são independentes uma da outra se qualquer uma delas acessar ou usar quaisquer entidades da outra. Tal interdependência é necessária se precisar ser feita verificação de interface.)
+        
+        (Compilação independente: unidades de programa podem ser compiladas sem informações sobre quaisquer outras unidades de programa. Unidades compiladas separadamente não são verificadas quanto à coerência de tipos)
+        
+        (Algumas linguagens não oferecem nem compilação separada, nem compilação independente, significando que somente a unidade de compilação é um programa completo. Isso a torna virtualmente inútil para aplicações industriais)
+        
+        Nossa linguagem terá compilação separada, pois essa compilação é bastante prática já que caso ocorra uma alteração no código, nem sempre será necessário compilar todo o código. A escolha da compilação separada ao invés da compilação independente se dá na falta de verificação de coerência de tipo desta.
+        
         \item
         Nós não teremos co-rotinas, pois apesar de ser um tipo de subprograma bem útil e interessante, não será necessário para um escopo educativo.
     \end{enumerate}
