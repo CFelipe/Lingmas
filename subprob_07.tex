@@ -224,22 +224,19 @@
         \end{comment}
 
         \item
+        \begin{comment}
         (Compilação separada: as unidades de compilação podem ser compiladas em
         tempos diferentes, mas elas não são independentes uma da outra se
         qualquer uma delas acessar ou usar quaisquer entidades da outra. Tal
         interdependência é necessária se precisar ser feita verificação de
-        interface.)
-
-        (Compilação independente: unidades de programa podem ser compiladas sem
+        interface.) (Compilação independente: unidades de programa podem ser compiladas sem
         informações sobre quaisquer outras unidades de programa. Unidades
         compiladas separadamente não são verificadas quanto à coerência de
-        tipos)
-
-        (Algumas linguagens não oferecem nem compilação separada, nem
+        tipos) (Algumas linguagens não oferecem nem compilação separada, nem
         compilação independente, significando que somente a unidade de
         compilação é um programa completo. Isso a torna virtualmente inútil
         para aplicações industriais)
-		
+		\end{comment}
 		Na compilação separada, partes do código podem ser compiladas em tempos diferentes, desde que essas partes não possuam outras dependências externas. Já na compilação independente, essa dependência não importa: qualquer unidade de código pode ser compilada sem se preocupar com dependências. Porém, isso faz com que unidades compiladas separadamente não tenham verificação quanto à coerência de tipo. Caso a linguagem não possua nenhum dos dois tipos de compilação citados, ou seja, compilação única, ela se tornará virtualmente inútil para aplicações industriais.		
 		
         Nossa linguagem terá compilação separada, pois essa compilação é
