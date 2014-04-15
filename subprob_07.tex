@@ -112,6 +112,7 @@
 \section{Resoluções}
     \begin{enumerate}
         \item
+	%---------------------------------1---------------------------------
         Na nossa linguagem daremos suporte tanto a funções quanto
         procedimentos, procurando explicitar sua diferença através da sintaxe
         com o objetivo de deixar claros ambos os conceitos facilitando o
@@ -153,8 +154,9 @@
             // A sintaxe vai aqui
         \end{lstlisting}
 
-        \item
-        Os parâmetros em nossa linguagem poderão ser de qualquer tipo da
+        \item 
+	%---------------------------------2---------------------------------
+	Os parâmetros em nossa linguagem poderão ser de qualquer tipo da
         linguagem, inclusive os tipos criados pelo usuário. A utilização de
         parâmetros será de forma posicional, uma vez que, como a maior parte
         dos programas será curto, não são necessários keyword parameters, que
@@ -165,10 +167,12 @@
         facilmente atribuir o valor de um subprograma a uma variável e então
         usar essa variável como argumento.
 
-        \item
+        \item	
+	%---------------------------------3---------------------------------
         Nós teremos passagem por valor, implementado por cópia, e passagem por referência.
 
         \item
+	%---------------------------------4---------------------------------
         Sim, ela utilizará o método de protótipo, onde os tipos dos parâmetros são incluindos dentro da lista de parâmetros, e por meio deste o tipo de um parâmetro é checado. A ideia de que a checagem de tipo não será implementada.
         Exemplo de prototipagem:
         \begin{lstlisting}[language=C]
@@ -182,6 +186,7 @@
         \end{lstlisting}
 
         \item
+	%---------------------------------5---------------------------------
         Subprograma genérico é um tipo de subprograma que funciona para diferentes tipos de entrada em diferentes ativações, é implementado com funções de template,  definindo um grupo de funções que pode ser gerado. Cabe ao compilador decidir de acordo com os parâmetros no momento da chamada da função qual exemplar do grupo será usado.
         
         Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de subprogramas de mesmo identificador declarado várias vezes no esqueleto do programa. Uma função específica do grupo é usada dependendo dos parâmetros quando a função é chamada.
@@ -225,6 +230,7 @@
 
         \item
         \begin{comment}
+	%---------------------------------6---------------------------------
         (Compilação separada: as unidades de compilação podem ser compiladas em
         tempos diferentes, mas elas não são independentes uma da outra se
         qualquer uma delas acessar ou usar quaisquer entidades da outra. Tal
@@ -246,6 +252,7 @@
         verificação de coerência de tipo desta.
 
         \item
+	%---------------------------------7---------------------------------
         Uma co-rotina é um tipo especial de subprograma. Ao invés de possuir
         uma relação mestre-escravo entre o subprograma que chama e o
         subprograma chamada, ambos estão em uma relação mais justa.
