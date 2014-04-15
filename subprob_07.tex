@@ -210,13 +210,27 @@
         \end{comment}
 
         \item
-        (Compilação separada: as unidades de compilação podem ser compiladas em tempos diferentes, mas elas não são independentes uma da outra se qualquer uma delas acessar ou usar quaisquer entidades da outra. Tal interdependência é necessária se precisar ser feita verificação de interface.)
+        (Compilação separada: as unidades de compilação podem ser compiladas em
+        tempos diferentes, mas elas não são independentes uma da outra se
+        qualquer uma delas acessar ou usar quaisquer entidades da outra. Tal
+        interdependência é necessária se precisar ser feita verificação de
+        interface.)
 
-        (Compilação independente: unidades de programa podem ser compiladas sem informações sobre quaisquer outras unidades de programa. Unidades compiladas separadamente não são verificadas quanto à coerência de tipos)
+        (Compilação independente: unidades de programa podem ser compiladas sem
+        informações sobre quaisquer outras unidades de programa. Unidades
+        compiladas separadamente não são verificadas quanto à coerência de
+        tipos)
 
-        (Algumas linguagens não oferecem nem compilação separada, nem compilação independente, significando que somente a unidade de compilação é um programa completo. Isso a torna virtualmente inútil para aplicações industriais)
+        (Algumas linguagens não oferecem nem compilação separada, nem
+        compilação independente, significando que somente a unidade de
+        compilação é um programa completo. Isso a torna virtualmente inútil
+        para aplicações industriais)
 
-        Nossa linguagem terá compilação separada, pois essa compilação é bastante prática já que caso ocorra uma alteração no código, nem sempre será necessário compilar todo o código. A escolha da compilação separada ao invés da compilação independente se dá na falta de verificação de coerência de tipo desta.
+        Nossa linguagem terá compilação separada, pois essa compilação é
+        bastante prática já que caso ocorra uma alteração no código, nem sempre
+        será necessário compilar todo o código. A escolha da compilação
+        separada ao invés da compilação independente se dá na falta de
+        verificação de coerência de tipo desta.
 
         \item
         (Ter ou não ter? Corotinas não afetam a utilização da linguagem, apenas incrementam. Mas seria necessário ter?)
