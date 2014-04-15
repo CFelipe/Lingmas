@@ -9,3 +9,4 @@
 *.toc
 *.dvi
 subprob_07.synctex.gz
+*.gz(busy)
