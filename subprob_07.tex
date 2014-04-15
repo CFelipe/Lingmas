@@ -128,13 +128,13 @@
         \texttt{void} no lugar do tipo:
 
         \begin{lstlisting}[language=C]
-        int funcao(int a, int b) {
-            return a + b;
-        }
+            int funcao(int a, int b) {
+                return a + b;
+            }
 
-        void procedimento() {
-            puts("Este comando gera um efeito colateral");
-        }
+            void procedimento() {
+                puts("Este comando gera um efeito colateral");
+            }
         \end{lstlisting}
 
         \begin{comment}
@@ -150,7 +150,7 @@
         A sintaxe da nossa linguagem, portanto, estará na seguinte forma
 
         \begin{lstlisting}[language=C]
-        // Bla bla
+            // A sintaxe vai aqui
         \end{lstlisting}
 
         \item
@@ -159,15 +159,14 @@
         parâmetros será de forma posicional, uma vez que, como a maior parte
         dos programas será curto, não são necessários keyword parameters, que
         diminuiriam a capacidade de escrita do nosso código e o tornaria muito
-        extenso.  Subprogramas não poderão ser utilizados como argumentos, uma
+        extenso. Subprogramas não poderão ser utilizados como argumentos, uma
         vez que acarretaria em uma queda de legibilidade para o programa. Além
         disso, novamente, como o caráter dos subprogramas é simples, pode-se
-        facilmente atribuir o valor de um subprograma à uma variável e então
+        facilmente atribuir o valor de um subprograma a uma variável e então
         usar essa variável como argumento.
 
         \item
-        Nós teremos passagem por valor, implementado por cópia, e passagem
-        por referência.
+        Nós teremos passagem por valor, implementado por cópia, e passagem por referência.
 
         \item
         Sim, ela utilizará o método de protótipo.
@@ -177,44 +176,50 @@
 
         \begin{comment}
             Com sobrecarga:
+            int soma(int a, int b) {
+                return a+b;
+            }
 
-                int soma(int a, int b) {
-                    return a+b;
-                }
+            float soma(float a, float b) {
+                return a+b;
+            }
 
-                float soma(float a, float b) {
-                    return a+b;
-                }
+            int soma(String a, String b) {
+                return a^b;
+            }
 
-                int soma(String a, String b) {
-                    return a^b;
-                }
+            Final das contas, posso lembrar o nome de apenas uma função e fazer:
 
-                Final das contas, posso lembrar o nome de apenas uma função
-                e fazer:
+            soma(1, 2);
+            soma(1.5, 2.5);
+            soma(“teste”, “ ftw”);
 
-                soma(1, 2);
-                soma(1.5, 2.5);
-                soma(“teste”, “ ftw”);
+            Sem sobrecarga:
 
-                Sem sobrecarga:
+            int somaInt(int a, int b) {
+                return a+b;
+            }
 
-                int somaInt(int a, int b) {
-                    return a+b;
-                }
+            float somaFloat(float a, float b) {
+                return a+b;
+            }
 
-                float somaFloat(float a, float b) {
-                    return a+b;
-                }
-
-                int somaString(String a, String b) {
-                    return a^b;
-                }
+            int somaString(String a, String b) {
+                return a^b;
+            }
         \end{comment}
 
-            Final das contas vou ter que lembrar do nome de 3funções
+        \item
+        (A única coisa que encontrei sobre compilação separada/independente
+        é que ela é utilizada em  C/C++, como o livro comenta, Fortran II.
+        Basicamente, compilação separada é poder compilar o código em
+        partes (desde que suas dependências estejam inclusas na sua própria
+        compilação) e então juntar, como exemplo os arquivos .o em C/C++)
 
-            Para códigos gigantes com centenas de funções, isso faz diferença .-.
+        (Resumindo: sim, porque não? É muito melhor de se trabalhar assim,
+        e não afeta a dificuldade da linguagem)
 
+        \item
+        Nós não teremos co-rotinas, pois apesar de ser um tipo de subprograma bem útil e interessante, não será necessário para um escopo educativo.
     \end{enumerate}
 \end{document}
