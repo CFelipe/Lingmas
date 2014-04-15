@@ -14,6 +14,8 @@
 \usepackage{verbatim}
 \usepackage[breaklinks]{hyperref}
 
+\setlist[enumerate]{leftmargin=*}
+
 % Um dia, talvez: http://linorg.usp.br/CTAN/macros/latex/contrib/minted/minted.pdf
 
 \tabulinesep=0.75ex % Espaçamento interno das tabelas
@@ -112,20 +114,20 @@
 \section{Resoluções}
     \begin{enumerate}
         \item
-        Na nossa linguagem daremos suporte tanto a funções quanto
+        Na nossa linguagem, daremos suporte tanto a funções quanto
         procedimentos, procurando explicitar sua diferença através da sintaxe
         com o objetivo de deixar claros ambos os conceitos facilitando o
         aprendizado dos nossos usuários.
 
-        Tanto funções quanto procedimentos são sub-rotinas, ou seja,
-        sequências de comandos reutilizáveis que podem ser alteradas sem a
-        necessidade de sua repetição no código-fonte. A diferença
-        conceitual entre procedimento e função reside na presença de
-        variáveis de retorno para funções. Os procedimentos, por outro lado,
-        são úteis apenas quando geram efeitos colaterais.
+        Tanto funções quanto procedimentos são sub-rotinas, ou seja, sequências
+        de comandos reutilizáveis que podem ser alteradas sem a necessidade de
+        sua repetição no código-fonte. A diferença conceitual entre
+        procedimento e função reside na presença de variáveis de retorno para
+        funções. Os procedimentos, por outro lado, são úteis apenas quando
+        geram efeitos colaterais.
 
-        Em C, por exemplo, procedimentos têm a mesma sintaxe de funções, com
-        \texttt{void} no lugar do tipo:
+        Em C, por exemplo, procedimentos possuem a mesma sintaxe de funções,
+        com \texttt{void} no lugar do tipo:
 
         \begin{lstlisting}[language=C]
             int funcao(int a, int b) {
@@ -137,20 +139,12 @@
             }
         \end{lstlisting}
 
-        \begin{comment}
-            <function>  ::= function id "(" <parameters_list> ")" "{"
-            <stmts> <return> "}"
-
-            Definindo sintaticamente um procedimento, temos:
-
-            <procedure> ::= procedure id "(" <parameters_list> ")" "{"
-            <stmts> "}"
-        \end{comment}
-
         A sintaxe da nossa linguagem, portanto, estará na seguinte forma
 
         \begin{lstlisting}[language=C]
-            // A sintaxe vai aqui
+            <function>  ::= function <id> "(" <parameters_list> ")" "{" <stmts> <return_stmt> "}"
+
+            <procedure> ::= procedure <id> "(" <parameters_list> ")" "{" <stmts> "}"
         \end{lstlisting}
 
         \item
@@ -166,52 +160,30 @@
         usar essa variável como argumento.
 
         \item
-        Nós teremos passagem por valor, implementado por cópia, e passagem por referência.
+        Como decidimos usar variáveis de referência em nossa linguagem, teremos
+        necessariamente passagem por referência, ou seja, o endereço do
+        argumento é passado para o subprograma e colocado na stack. Também
+        teremos passagem por valor com cópia, em que uma cópia do argumento é
+        criada na stack ao ser chamado o subprograma.
 
         \item
         Sim, ela utilizará o método de protótipo.
 
         \item
-        Subprograma genérico é um tipo de subprograma que funciona para diferentes tipos de entrada em diferentes ativações, é implementado com funções de template,  definindo um grupo de funções que pode ser gerado. Cabe ao compilador decidir de acordo com os parâmetros no momento da chamada da função qual exemplar do grupo será usado.
-        
-        Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de subprogramas de mesmo identificador declarado várias vezes no esqueleto do programa. Uma função específica do grupo é usada dependendo dos parâmetros quando a função é chamada.
-        
-        Na nossa linguagem optamos por usar de sobrecarga somente, ignorando subprogramas genéricos. Essa decisão advém da maior simplicidade em se definir sobrecarga, mais adequado aos usuários de nossa linguagem.
+        Subprograma genérico é um tipo de subprograma que funciona para
+        diferentes tipos de entrada em diferentes ativações, sendo implementado
+        com funções de template, definindo um grupo de funções que pode ser
+        gerado. Cabe ao compilador decidir de acordo com os parâmetros no
+        momento da chamada da função qual exemplar do grupo será usado.
 
-        \begin{comment}
-            Com sobrecarga:
-            int soma(int a, int b) {
-                return a+b;
-            }
+        Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de
+        subprogramas de mesmo identificador declarado várias vezes no esqueleto
+        do programa. Uma função específica do grupo é usada dependendo dos
+        parâmetros quando a função é chamada.
 
-            float soma(float a, float b) {
-                return a+b;
-            }
-
-            int soma(String a, String b) {
-                return a^b;
-            }
-
-            Final das contas, posso lembrar o nome de apenas uma função e fazer:
-
-            soma(1, 2);
-            soma(1.5, 2.5);
-            soma(“teste”, “ ftw”);
-
-            Sem sobrecarga:
-
-            int somaInt(int a, int b) {
-                return a+b;
-            }
-
-            float somaFloat(float a, float b) {
-                return a+b;
-            }
-
-            int somaString(String a, String b) {
-                return a^b;
-            }
-        \end{comment}
+        Na nossa linguagem optamos por usar de sobrecarga somente, ignorando
+        subprogramas genéricos. Essa decisão advém da maior simplicidade em se
+        definir sobrecarga, mais adequado aos usuários de nossa linguagem.
 
         \item
         (Compilação separada: as unidades de compilação podem ser compiladas em
@@ -229,9 +201,16 @@
         compilação independente, significando que somente a unidade de
         compilação é um programa completo. Isso a torna virtualmente inútil
         para aplicações industriais)
-		
-		Na compilação separada, partes do código podem ser compiladas em tempos diferentes, desde que essas partes não possuam outras dependências externas. Já na compilação independente, essa dependência não importa: qualquer unidade de código pode ser compilada sem se preocupar com dependências. Porém, isso faz com que unidades compiladas separadamente não tenham verificação quanto à coerência de tipo. Caso a linguagem não possua nenhum dos dois tipos de compilação citados, ou seja, compilação única, ela se tornará virtualmente inútil para aplicações industriais.		
-		
+
+        Na compilação separada, partes do código podem ser compiladas em tempos
+        diferentes, desde que essas partes não possuam outras dependências
+        externas. Já na compilação independente, essa dependência não importa:
+        qualquer unidade de código pode ser compilada sem se preocupar com
+        dependências. Porém, isso faz com que unidades compiladas separadamente
+        não tenham verificação quanto à coerência de tipo. Caso a linguagem não
+        possua nenhum dos dois tipos de compilação citados, ou seja, compilação
+        única, ela se tornará virtualmente inútil para aplicações industriais.
+
         Nossa linguagem terá compilação separada, pois essa compilação é
         bastante prática já que caso ocorra uma alteração no código, nem sempre
         será necessário compilar todo o código. A escolha da compilação
@@ -243,7 +222,7 @@
         uma relação mestre-escravo entre o subprograma que chama e o
         subprograma chamada, ambos estão em uma relação mais justa.
 
-        Apesar de co-rotinas serem uma funcionalidade relevante à uma
+        Apesar de co-rotinas serem uma funcionalidade relevante a uma
         linguagem, como a nossa linguagem possui um escopo educativo elas não
         serão utilizadas, e portanto desnecessárias.
 
