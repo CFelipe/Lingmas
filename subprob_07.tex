@@ -5,158 +5,216 @@
 \usepackage{enumitem} % Para itemsep etc
 \usepackage{longtable} % Dependência do longtabu
 \usepackage{tabu} % Para melhor criação de tabelas
-\usepackage{color}
+\usepackage{listings} % Para códigos
+\usepackage{lstautogobble} % Códigos indentados corretamente
+\usepackage{color} % Para coloração de códigos
+\usepackage{inconsolata} % Para fonte de códigos
 \usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage[breaklinks]{hyperref}
 
+% Um dia, talvez: http://linorg.usp.br/CTAN/macros/latex/contrib/minted/minted.pdf
+
 \tabulinesep=0.75ex % Espaçamento interno das tabelas
 
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+
+\usepackage{listings}
+\lstset{
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b
+}
+
 \begin{document}
-    \begin{center}
-        \textsc{Universidade Federal do Rio Grande do Norte} \\
-        \textsc{Departamento de Informática e Matemática Aplicada}
-    \end{center}
+\begin{center}
+    \textsc{Universidade Federal do Rio Grande do Norte} \\
+    \textsc{Departamento de Informática e Matemática Aplicada}
+\end{center}
 
-    \bigskip
+\bigskip
 
-    \begin{tabular}{@{}ll@{}}
-            \emph{Disciplina:} & DIM0437 --- Linguagens de Programação:
-                                 Conceitos e Paradigmas \\
-            \emph{Docente:}    & Umberto Souza da Costa \\
-            \emph{Discentes:}  & Dogival Ferreira da Silva Junior \\
-                               & Felipe Cortez de Sá \\
-                               & Gabriel Sebastian von Conta \\
-                               & Phellipe Albert Volkmer \\
-                               & Vinícius Araújo Petch
-    \end{tabular}
+\begin{tabular}{@{}ll@{}}
+    \emph{Disciplina:} & DIM0437 --- Linguagens de Programação:
+                            Conceitos e Paradigmas \\
+    \emph{Docente:}    & Umberto Souza da Costa \\
+    \emph{Discentes:}  & Dogival Ferreira da Silva Junior \\
+                       & Felipe Cortez de Sá \\
+                       & Gabriel Sebastian von Conta \\
+                       & Phellipe Albert Volkmer \\
+                       & Vinícius Araújo Petch
+\end{tabular}
 
-    \bigskip
+\bigskip
 
-    \begin{center}
-        \large \textbf{Subproblema 7} --- Subprogramas
-    \end{center}
+\begin{center}
+\large \textbf{Subproblema 7} --- Subprogramas
+\end{center}
 
-    \section{Problema}
-        \subsection{Produto do problema}
-        Definição da sintaxe e semântica intuitiva dos mecanismos que regem as
-        formas de abstração de processamento (procedimentos e funções) da
-        linguagem de programação a ser definida pelo grupo. Incluir a
-        representação destas abstrações, assim como os mecanismos de passagem
-        de parâmetros e a implementação sugerida.
+\section{Problema}
+    \subsection{Produto do problema}
+    Definição da sintaxe e semântica intuitiva dos mecanismos que regem as
+    formas de abstração de processamento (procedimentos e funções) da
+    linguagem de programação a ser definida pelo grupo. Incluir a
+    representação destas abstrações, assim como os mecanismos de passagem
+    de parâmetros e a implementação sugerida.
 
-        \subsection{Questões}
-        \begin{enumerate}
-            \item
-            Como serão definidos os procedimentos e funções de sua linguagem?
-            Note que estes conceitos são diferentes, embora sejam tratados de
-            forma unificada por algumas linguagens de programação. Quais são as
-            diferenças entre esses conceitos?
+    \subsection{Questões}
+    \begin{enumerate}
+        \item
+        Como serão definidos os procedimentos e funções de sua linguagem?
+        Note que estes conceitos são diferentes, embora sejam tratados de
+        forma unificada por algumas linguagens de programação. Quais são as
+        diferenças entre esses conceitos?
 
-            \item
-            Como serão definidos os parâmetros da linguagem? Quais dados
-            poderão ser colocados como argumentos em chamadas a procedimentos e
-            funções? Nomes de subprogramas poderão ser utilizados como
-            parâmetros?
+        \item
+        Como serão definidos os parâmetros da linguagem? Quais dados
+        poderão ser colocados como argumentos em chamadas a procedimentos e
+        funções? Nomes de subprogramas poderão ser utilizados como
+        parâmetros?
 
-            \item
-            Quais serão as formas de passagem de parâmetros e como serão
-            implementadas?
+        \item
+        Quais serão as formas de passagem de parâmetros e como serão
+        implementadas?
 
-            \item
-            Sua linguagem verificará os tipos de parâmetros dos subprogramas?
+        \item
+        Sua linguagem verificará os tipos de parâmetros dos subprogramas?
 
-            \item
-            A linguagem terá subprogramas sobrecarregados ou genéricos?
+        \item
+        A linguagem terá subprogramas sobrecarregados ou genéricos?
 
-            \item
-            A linguagem deverá ter compilação separada ou independente?
+        \item
+        A linguagem deverá ter compilação separada ou independente?
 
-            \item
-            Sua linguagem dará suporte a co-rotinas?
-        \end{enumerate}
+        \item
+        Sua linguagem dará suporte a co-rotinas?
+    \end{enumerate}
 
-    \section{Resoluções}
-        \begin{enumerate}
-            \item
-            Na nossa linguagem usaremos ambos, funções e procedimentos, com o objetivo de deixar claro ambos os conceitos para facilitar o aprendizado dos nossos usuários. Definindo sintaticamente uma função, temos:
+\section{Resoluções}
+    \begin{enumerate}
+        \item
+        Na nossa linguagem daremos suporte tanto a funções quanto
+        procedimentos, procurando explicitar sua diferença através da sintaxe
+        com o objetivo de deixar claros ambos os conceitos facilitando o
+        aprendizado dos nossos usuários.
 
-            Ambas são abstrações de processo (subprogramas) e se eu vier perguntar qual deles se assemelha a um comando (???): procedimento
-            \begin{comment}
-            <function> 	::= function id "(" <parameters_list> ")" "{"
-            <stmts> 
-            <return> 
-            "}"
-            
+        Tanto funções quanto procedimentos são sub-rotinas, ou seja,
+        sequências de comandos reutilizáveis que podem ser alteradas sem a
+        necessidade de sua repetição no código-fonte. A diferença
+        conceitual entre procedimento e função reside na presença de
+        variáveis de retorno para funções. Os procedimentos, por outro lado,
+        são úteis apenas quando geram efeitos colaterais.
+
+        Em C, por exemplo, procedimentos têm a mesma sintaxe de funções, com
+        \texttt{void} no lugar do tipo:
+
+        \begin{lstlisting}[language=C]
+        int funcao(int a, int b) {
+            return a + b;
+        }
+
+        void procedimento() {
+            puts("Este comando gera um efeito colateral");
+        }
+        \end{lstlisting}
+
+        \begin{comment}
+            <function>  ::= function id "(" <parameters_list> ")" "{"
+            <stmts> <return> "}"
+
             Definindo sintaticamente um procedimento, temos:
-            
-            <procedure>	::= procedure id "(" <parameters_list> ")" "{"
-            			<stmts>
-            			"}"
-            \end{comment}
-            A diferença conceitual entre procedimento e função reside na ausência de retorno nos procedimentos, normalmente os procedimentos alteram o programa principal.
 
-            \item
-            Os parâmetros em nossa linguagem poderão ser de qualquer tipo da linguagem, inclusive os tipos criados pelo usuário.
-        	A utilização de parâmetros será de forma posicional, uma vez que, como a maior parte dos programas será curto, não são necessários keyword parameters, que diminuiriam a capacidade de escrita do nosso código e o tornaria muito extenso.
-        	Subprogramas não poderão ser utilizados como argumentos, uma vez que acarretaria em uma queda de legibilidade para o programa. Além disso, novamente, como o caráter dos subprogramas é simples, pode-se facilmente atribuir o valor de um subprograma à uma variável e então usar essa variável como argumento.
+            <procedure> ::= procedure id "(" <parameters_list> ")" "{"
+            <stmts> "}"
+        \end{comment}
 
-            \item
-            Nós teremos passagem por valor, implementado por cópia, e passagem por referência. 
-            \item
-            Sim, ela utilizará o método de protótipo.
-            \item
-            Não teremos subprogramas com sobrecarga ou genéricos.
-	
-			\begin{comment}
+        A sintaxe da nossa linguagem, portanto, estará na seguinte forma
+
+        \begin{lstlisting}[language=C]
+        // Bla bla
+        \end{lstlisting}
+
+        \item
+        Os parâmetros em nossa linguagem poderão ser de qualquer tipo da
+        linguagem, inclusive os tipos criados pelo usuário. A utilização de
+        parâmetros será de forma posicional, uma vez que, como a maior parte
+        dos programas será curto, não são necessários keyword parameters, que
+        diminuiriam a capacidade de escrita do nosso código e o tornaria muito
+        extenso.  Subprogramas não poderão ser utilizados como argumentos, uma
+        vez que acarretaria em uma queda de legibilidade para o programa. Além
+        disso, novamente, como o caráter dos subprogramas é simples, pode-se
+        facilmente atribuir o valor de um subprograma à uma variável e então
+        usar essa variável como argumento.
+
+        \item
+        Nós teremos passagem por valor, implementado por cópia, e passagem
+        por referência.
+
+        \item
+        Sim, ela utilizará o método de protótipo.
+
+        \item
+        Não teremos subprogramas com sobrecarga ou genéricos.
+
+        \begin{comment}
             Com sobrecarga:
-            
-            	int soma(int a, int b)
-            {
-            return a+b;
-            }
-            	
-            	float soma(float a, float b)
-            {
-            return a+b;
-            }
-            
-            	int soma(String a, String b)
-            {
-            return a^b;
-            }
-            
-            	Final das contas, posso lembrar o nome de apenas uma função e fazer:
-            
-            	soma(1, 2);
-            	soma(1.5, 2.5);
-            	soma(“teste”, “ ftw”);	
-            
-            	Sem sobrecarga:
-            	
-            	int somaInt(int a, int b)
-            {
-            return a+b;
-            }
-            	
-            	float somaFloat(float a, float b)
-            {
-            return a+b;
-            }
-            
-            	int somaString(String a, String b)
-            {
-            return a^b;
-            }
-            \end{comment}
-            	Final das contas vou ter que lembrar do nome de 3funções
-            
-            	Para códigos gigantes com centenas de funções, isso faz diferença .-.
 
-            \item
+                int soma(int a, int b) {
+                    return a+b;
+                }
 
-            \item
-            
-        \end{enumerate}
+                float soma(float a, float b) {
+                    return a+b;
+                }
+
+                int soma(String a, String b) {
+                    return a^b;
+                }
+
+                Final das contas, posso lembrar o nome de apenas uma função
+                e fazer:
+
+                soma(1, 2);
+                soma(1.5, 2.5);
+                soma(“teste”, “ ftw”);
+
+                Sem sobrecarga:
+
+                int somaInt(int a, int b) {
+                    return a+b;
+                }
+
+                float somaFloat(float a, float b) {
+                    return a+b;
+                }
+
+                int somaString(String a, String b) {
+                    return a^b;
+                }
+        \end{comment}
+
+            Final das contas vou ter que lembrar do nome de 3funções
+
+            Para códigos gigantes com centenas de funções, isso faz diferença .-.
+
+    \end{enumerate}
 \end{document}
