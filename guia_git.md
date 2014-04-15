@@ -15,7 +15,7 @@ baixará o repositório para um novo diretório no seu computador (no exemplo,
 `~/Desenvolvimento/Transparencia`).
 
 ```bash
-$ git clone https://github.com/CFelipe/LPCP.git
+$ git clone https://github.com/CFelipe/Lingmas.git
 ```
 
 Se você fez alterações em um ou mais arquivos e deseja enviá-los ao
@@ -49,4 +49,22 @@ Para baixar as últimas versões dos arquivos do repositório remoto, use
 
 ```bash
 $ git pull
+```
+
+Se houver conflito de arquivos, você pode ter que fazer um merge. Neste caso, é
+interessante usar uma ferramenta gráfica de merge como o [DiffMerge] ou
+[Meld], instalando-a e posteriormente mudando as configurações
+
+[DiffMerge]: http://www.sourcegear.com/diffmerge/ (DiffMerge)
+[Meld]: http://meldmerge.org/ (Meld)
+
+```bash
+$ git config --global diff.tool diffmerge
+$ git config --global merge.tool diffmerge
+```
+
+Para fazer o merge, use
+
+```bash
+$ git mergetool
 ```
