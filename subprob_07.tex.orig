@@ -233,13 +233,14 @@
         verificação de coerência de tipo desta.
 
         \item
-        Uma co-rotina é um tipo especial de subprograma. Ao invés de possuir
-        uma relação mestre-escravo entre o subprograma que chama e o
-        subprograma chamada, ambos estão em uma relação mais justa.
+<<<<<<< HEAD
+        (Ter ou não ter? Corotinas não afetam a utilização da linguagem, apenas incrementam. Mas seria necessário ter?)
 
-        Apesar de co-rotinas serem uma funcionalidade relevante à uma
-        linguagem, como a nossa linguagem possui um escopo educativo elas não
-        serão utilizadas, e portanto desnecessárias.
-
+=======
+		Uma co-rotina é um tipo especial de subprograma. Ao invés de possuir uma relação mestre-escravo entre o subprograma que chama e o subprograma chamada, ambos estão em uma relação mais justa.
+		
+		Apesar de co-rotinas serem uma funcionalidade relevante à uma linguagem, como a nossa linguagem possui um escopo educativo elas não serão utilizadas, e portanto desnecessárias.
+        
+>>>>>>> 1011612734bafe9c1ec770b01cfb9d6d4455416e
     \end{enumerate}
 \end{document}
