@@ -172,7 +172,11 @@
         Sim, ela utilizará o método de protótipo.
 
         \item
-        Não teremos subprogramas genéricos, mas teremos subprogramas com sobrecarga.
+        Subprograma genérico é um tipo de subprograma que funciona para diferentes tipos de entrada em diferentes ativações, é implementado com funções de template,  definindo um grupo de funções que pode ser gerado. Cabe ao compilador decidir de acordo com os parâmetros no momento da chamada da função qual exemplar do grupo será usado.
+        
+        Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de subprogramas de mesmo identificador declarado várias vezes no esqueleto do programa. Uma função específica do grupo é usada dependendo dos parâmetros quando a função é chamada.
+        
+        Na nossa linguagem optamos por usar de sobrecarga somente, ignorando subprogramas genéricos. Essa decisão advém da maior simplicidade em se definir sobrecarga, mais adequado aos usuários de nossa linguagem.
 
         \begin{comment}
             Com sobrecarga:
