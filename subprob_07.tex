@@ -183,8 +183,8 @@
         Subprograma genérico é um tipo de subprograma que funciona para
         diferentes tipos de entrada em diferentes ativações, é implementado com
         funções de template,  definindo um grupo de funções que pode ser
-        gerado. Cabe ao compilador decidir de acordo com os parâmetros no
-        momento da chamada da função qual exemplar do grupo será usado.
+        gerado. Cabe ao compilador decidir que versão será criada e utilizada 
+        analisando os parâmetros de cada chamada.
 
         Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de
         subprogramas de mesmo identificador declarado várias vezes no esqueleto
@@ -192,8 +192,10 @@
         parâmetros quando a função é chamada.
 
         Na nossa linguagem optamos por usar somente de sobrecarga, ignorando
-        subprogramas genéricos. Essa decisão advém da maior simplicidade em se
-        definir sobrecarga, mais adequado aos usuários de nossa linguagem.
+        subprogramas genéricos. Essa decisão advém da maior legibillidade e 
+        entendimento em se definir sobrecarga em detrimento da simplicidade e 
+        facilidade de escrita obtida a partir de uma função de template, assim 
+        julgando mais adequado aos usuários de nossa linguagem (iniciantes).
 
         \begin{comment}
             Com sobrecarga:
