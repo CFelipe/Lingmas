@@ -139,7 +139,7 @@
             }
         \end{lstlisting}
 
-        A sintaxe da nossa linguagem, portanto, estará na seguinte forma
+        A sintaxe da nossa linguagem, portanto, estará na seguinte forma:
 
         \begin{lstlisting}[language=C]
             <function>  ::= function <id> "(" <parameters_list> ")" "{" <stmts> <return_stmt> "}"
@@ -151,7 +151,7 @@
         Os parâmetros em nossa linguagem poderão ser de qualquer tipo da
         linguagem, inclusive os tipos criados pelo usuário. A utilização de
         parâmetros será de forma posicional, uma vez que, como a maior parte
-        dos programas será curto, não são necessários keyword parameters, que
+        dos programas será curto, não são necessários parâmetros-chave, que
         diminuiriam a capacidade de escrita do nosso código e o tornaria muito
         extenso. Subprogramas não poderão ser utilizados como argumentos, uma
         vez que acarretaria em uma queda de legibilidade para o programa. Além
@@ -197,46 +197,7 @@
         facilidade de escrita obtida a partir de uma função de template, assim 
         julgando mais adequado aos usuários de nossa linguagem (iniciantes).
 
-        \begin{comment}
-            Com sobrecarga:
-            int soma(int a, int b) {
-                return a+b;
-            }
-
-            float soma(float a, float b) {
-                return a+b;
-            }
-
-            int soma(String a, String b) {
-                return a^b;
-            }
-        \end{comment}
-
-        Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de
-        subprogramas de mesmo identificador declarado várias vezes no esqueleto
-        do programa. Uma função específica do grupo é usada dependendo dos
-        parâmetros quando a função é chamada.
-
-        Na nossa linguagem optamos por usar de sobrecarga somente, ignorando
-        subprogramas genéricos. Essa decisão advém da maior simplicidade em se
-        definir sobrecarga, mais adequado aos usuários de nossa linguagem.
-
-        \item
-        \begin{comment}
-            (Compilação separada: as unidades de compilação podem ser
-            compiladas em tempos diferentes, mas elas não são independentes uma
-            da outra se qualquer uma delas acessar ou usar quaisquer entidades
-            da outra. Tal interdependência é necessária se precisar ser feita
-            verificação de interface.) (Compilação independente: unidades de
-            programa podem ser compiladas sem informações sobre quaisquer
-            outras unidades de programa.  Unidades compiladas separadamente não
-            são verificadas quanto à coerência de tipos) (Algumas linguagens
-            não oferecem nem compilação separada, nem compilação independente,
-            significando que somente a unidade de compilação é um programa
-            completo. Isso a torna virtualmente inútil para aplicações
-            industriais)
-        \end{comment}
-
+       	\item
         Na compilação separada, partes do código podem ser compiladas em tempos
         diferentes, desde que essas partes não possuam outras dependências
         externas. Já na compilação independente, essa dependência não importa:
@@ -247,7 +208,7 @@
         única, ela se tornará virtualmente inútil para aplicações industriais.
 
         Nossa linguagem terá compilação separada, pois essa compilação é
-        bastante prática já que caso ocorra uma alteração no código, nem sempre
+        bastante prática, já que caso ocorra uma alteração no código, nem sempre
         será necessário compilar todo o código. A escolha da compilação
         separada ao invés da compilação independente se dá na falta de
         verificação de coerência de tipo desta.
@@ -255,11 +216,19 @@
         \item
         Uma co-rotina é um tipo especial de subprograma. Ao invés de possuir
         uma relação mestre-escravo entre o subprograma que chama e o
-        subprograma chamada, ambos estão em uma relação mais justa.
-
-        Apesar de co-rotinas serem uma funcionalidade relevante a uma
-        linguagem, como a nossa linguagem possui um escopo educativo elas não
-        serão utilizadas, e portanto desnecessárias.
+        subprograma chamada, ambos estão em uma relação mais equalitária. Um exemplo de co-rotina seria:
+        \begin{lstlisting}[language=C]
+        	sub co1(){
+				...
+				resume co2();
+				...
+				resume co3();
+				...
+			}
+        \end{lstlisting}
+		Na primeira chamada de \emph{co1}, a sua execução começa a partir da sua primeira declaração, até que \emph{co2} seja retomado. Na próxima vez que \emph{co1} seja retomado, sua execução continuará a partir da primeira declaração após a retomada de \emph{co2}, até a retomada de \emph{co2}. Na sua terceira retomada, \emph{co1} continuará da primeira declaração após a retomada de \emph{co3}.
+       
+        Apesar deste tipo ser algo útil em uma linguagem, ele não serão utilizado, pois o nosso projeto possui um escopo educativo, e portanto seria uma funcionalidade desnecessária à nossa linguagem.
 
     \end{enumerate}
 \end{document}
