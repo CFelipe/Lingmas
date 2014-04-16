@@ -8,7 +8,7 @@
 \usepackage{listings} % Para códigos
 \usepackage{lstautogobble} % Códigos indentados corretamente
 \usepackage{color} % Para coloração de códigos
-\usepackage{zi4} % Para fonte de códigos
+%\usepackage{zi4} % Para fonte de códigos
 \usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
 \usepackage{graphicx}
 \usepackage{verbatim}
@@ -139,7 +139,7 @@
             }
         \end{lstlisting}
 
-        A sintaxe da nossa linguagem, portanto, estará na seguinte forma
+        A sintaxe da nossa linguagem, portanto, possuirá a seguinte forma:
 
         \begin{lstlisting}[language=C]
             <function>  ::= function <id> "(" <parameters_list> ")" "{" <stmts> <return_stmt> "}"
@@ -151,13 +151,17 @@
         Os parâmetros em nossa linguagem poderão ser de qualquer tipo da
         linguagem, inclusive os tipos criados pelo usuário. A utilização de
         parâmetros será de forma posicional, uma vez que, como a maior parte
-        dos programas será curto, não são necessários keyword parameters, que
-        diminuiriam a capacidade de escrita do nosso código e o tornaria muito
-        extenso. Subprogramas não poderão ser utilizados como argumentos, uma
-        vez que acarretaria em uma queda de legibilidade para o programa. Além
-        disso, novamente, como o caráter dos subprogramas é simples, pode-se
-        facilmente atribuir o valor de um subprograma a uma variável e então
-        usar essa variável como argumento.
+        dos programas será curto, não são necessários \emph{keyword
+        parameters}, que diminuiriam a capacidade de escrita do nosso código e
+        o tornaria muito extenso. Subprogramas não poderão ser utilizados como
+        argumentos, uma vez que isso acarretaria numa queda de legibilidade
+        para o programa.
+
+        \begin{comment}
+            Além disso, novamente, como o caráter dos subprogramas é simples,
+            pode-se facilmente atribuir o valor de um subprograma a uma
+            variável e então usar essa variável como argumento.
+        \end{comment}
 
         \item
         Como decidimos usar variáveis de referência em nossa linguagem, teremos
@@ -167,23 +171,35 @@
         criada na stack ao ser chamado o subprograma.
 
         \item
-        Sim, ela utilizará o método de protótipo, onde os tipos dos parâmetros são inclusos dentro da lista de parâmetros, e por meio deste o tipo de um parâmetro é checado. Em C99 e C++, é possível evitar a checagem de tipo para alguns parâmetros, porém essa funcionalidade não será utilizada.
-        Exemplo de prototipagem:
+        Sim, ela utilizará o método de protótipo, onde os tipos dos parâmetros
+        são inclusos dentro da lista de parâmetros, e por meio deste o tipo de
+        um parâmetro é checado. Em C99 e C++, é possível evitar a checagem de
+        tipo para alguns parâmetros, porém essa funcionalidade não será
+        utilizada.
+
+        Um exemplo de prototipagem em nossa linguagem seria:
         \begin{lstlisting}[language=C]
-            int function1 (int par1, int par2, float par3) {
-            	...
+            int function1 (int par1, float par2) {
             }
         \end{lstlisting}
-        Neste exemplo ocorre evasão de checagem de tipo, onde \emph{printf} checará apenas o primeiro parâmetro. Após isso, tudo é permitido (inclusive nada):
+
+        Em C, usar reticências após um primeiro argumento causa evasão de
+        checagem de tipo. No exemplo seguinte, \emph{printf} checará apenas o
+        primeiro parâmetro. Após isso, tudo é permitido, permitindo que a
+        função possa imprimir qualquer tipo suportado pela sintaxe de
+        formatação implementada:
         \begin{lstlisting}[language=C]
-            int printf(const char* format_string, . . .);
+        int printf(const char* format_string, (*@\ldots@*));
         \end{lstlisting}
-        
+
+        Decidimos incorporar o mesmo recurso com a mesma sintaxe em nossa
+        linguagem.
+
         \item
         Subprograma genérico é um tipo de subprograma que funciona para
         diferentes tipos de entrada em diferentes ativações, é implementado com
-        funções de template,  definindo um grupo de funções que pode ser
-        gerado. Cabe ao compilador decidir que versão será criada e utilizada 
+        funções de template, definindo um grupo de funções que pode ser gerado.
+        Cabe ao compilador decidir que versão será criada e utilizada
         analisando os parâmetros de cada chamada.
 
         Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de
@@ -191,11 +207,11 @@
         do programa. Uma função específica do grupo é usada dependendo dos
         parâmetros quando a função é chamada.
 
-        Na nossa linguagem optamos por usar somente de sobrecarga, ignorando
-        subprogramas genéricos. Essa decisão advém da maior legibillidade e 
-        entendimento em se definir sobrecarga em detrimento da simplicidade e 
-        facilidade de escrita obtida a partir de uma função de template, assim 
-        julgando mais adequado aos usuários de nossa linguagem (iniciantes).
+        Na nossa linguagem, optamos por usar somente sobrecarga, ignorando
+        subprogramas genéricos. Essa decisão advém da maior legibilidade e
+        entendimento em se definir sobrecarga em detrimento da simplicidade e
+        facilidade de escrita obtida a partir de uma função de template, assim
+        julgando mais adequado aos usuários de nossa linguagem.
 
         \begin{comment}
             Com sobrecarga:
@@ -211,15 +227,6 @@
                 return a^b;
             }
         \end{comment}
-
-        Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de
-        subprogramas de mesmo identificador declarado várias vezes no esqueleto
-        do programa. Uma função específica do grupo é usada dependendo dos
-        parâmetros quando a função é chamada.
-
-        Na nossa linguagem optamos por usar de sobrecarga somente, ignorando
-        subprogramas genéricos. Essa decisão advém da maior simplicidade em se
-        definir sobrecarga, mais adequado aos usuários de nossa linguagem.
 
         \item
         \begin{comment}
@@ -258,8 +265,9 @@
         subprograma chamada, ambos estão em uma relação mais justa.
 
         Apesar de co-rotinas serem uma funcionalidade relevante a uma
-        linguagem, como a nossa linguagem possui um escopo educativo elas não
-        serão utilizadas, e portanto desnecessárias.
+        linguagem, a nossa linguagem possui um escopo educativo, portanto elas
+        não serão utilizadas, já que exigem um domínio mais avançado de
+        conceitos de linguagens de programação.
 
     \end{enumerate}
 \end{document}
