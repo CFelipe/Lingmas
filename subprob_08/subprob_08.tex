@@ -1,0 +1,254 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel} % Hifenização e dicionário
+\usepackage[left=3.00cm, right=2.00cm, top=3.00cm, bottom=2.00cm]{geometry}
+\usepackage{enumitem} % Para itemsep etc
+\usepackage{longtable} % Dependência do longtabu
+\usepackage{tabu} % Para melhor criação de tabelas
+\usepackage{listings} % Para códigos
+\usepackage{lstautogobble} % Códigos indentados corretamente
+\usepackage{color} % Para coloração de códigos
+\usepackage{zi4} % Para fonte de códigos
+\usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage[breaklinks]{hyperref}
+
+\setlist[enumerate]{leftmargin=*}
+
+% Um dia, talvez: http://linorg.usp.br/CTAN/macros/latex/contrib/minted/minted.pdf
+
+\tabulinesep=0.75ex % Espaçamento interno das tabelas
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+
+\usepackage{listings}
+\lstset{
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b
+}
+
+\begin{document}
+\begin{center}
+    \textsc{Universidade Federal do Rio Grande do Norte} \\
+    \textsc{Departamento de Informática e Matemática Aplicada}
+\end{center}
+
+\bigskip
+
+\begin{tabular}{@{}ll@{}}
+    \emph{Disciplina:} & DIM0437 --- Linguagens de Programação:
+                            Conceitos e Paradigmas \\
+    \emph{Docente:}    & Umberto Souza da Costa \\
+    \emph{Discentes:}  & Dogival Ferreira da Silva Junior \\
+                       & Felipe Cortez de Sá \\
+                       & Gabriel Sebastian von Conta \\
+                       & Phellipe Albert Volkmer \\
+                       & Vinícius Araújo Petch
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\large \textbf{Subproblema 7} --- Subprogramas
+\end{center}
+
+\section{Problema}
+    \subsection{Produto do problema}
+    Definição da sintaxe e semântica intuitiva dos mecanismos que regem as
+    formas de abstração de processamento (procedimentos e funções) da
+    linguagem de programação a ser definida pelo grupo. Incluir a
+    representação destas abstrações, assim como os mecanismos de passagem
+    de parâmetros e a implementação sugerida.
+
+    \subsection{Questões}
+    \begin{enumerate}
+        \item
+        Como serão definidos os procedimentos e funções de sua linguagem?
+        Note que estes conceitos são diferentes, embora sejam tratados de
+        forma unificada por algumas linguagens de programação. Quais são as
+        diferenças entre esses conceitos?
+
+        \item
+        Como serão definidos os parâmetros da linguagem? Quais dados
+        poderão ser colocados como argumentos em chamadas a procedimentos e
+        funções? Nomes de subprogramas poderão ser utilizados como
+        parâmetros?
+
+        \item
+        Quais serão as formas de passagem de parâmetros e como serão
+        implementadas?
+
+        \item
+        Sua linguagem verificará os tipos de parâmetros dos subprogramas?
+
+        \item
+        A linguagem terá subprogramas sobrecarregados ou genéricos?
+
+        \item
+        A linguagem deverá ter compilação separada ou independente?
+
+        \item
+        Sua linguagem dará suporte a co-rotinas?
+    \end{enumerate}
+
+\section{Resoluções}
+    \begin{enumerate}
+        \item
+        Na nossa linguagem, daremos suporte tanto a funções quanto
+        procedimentos, procurando explicitar sua diferença através da sintaxe
+        com o objetivo de deixar claros ambos os conceitos facilitando o
+        aprendizado dos nossos usuários.
+
+        Tanto funções quanto procedimentos são sub-rotinas, ou seja, sequências
+        de comandos reutilizáveis que podem ser alteradas sem a necessidade de
+        sua repetição no código-fonte. A diferença conceitual entre
+        procedimento e função reside na presença de variáveis de retorno para
+        funções. Os procedimentos, por outro lado, são úteis apenas quando
+        geram efeitos colaterais.
+
+        Em C, por exemplo, procedimentos possuem a mesma sintaxe de funções,
+        com \texttt{void} no lugar do tipo:
+
+        \begin{lstlisting}[language=C]
+            int funcao(int a, int b) {
+                return a + b;
+            }
+
+            void procedimento() {
+                puts("Este comando gera um efeito colateral");
+            }
+        \end{lstlisting}
+
+        A sintaxe da nossa linguagem, portanto, possuirá a seguinte forma:
+
+        \begin{lstlisting}[language=C]
+            <function>  ::= function <id> "(" <parameters_list> ")" "{" <stmts> <return_stmt> "}"
+
+            <procedure> ::= procedure <id> "(" <parameters_list> ")" "{" <stmts> "}"
+        \end{lstlisting}
+
+        \item
+        Os parâmetros em nossa linguagem poderão ser de qualquer tipo da
+        linguagem, inclusive os tipos criados pelo usuário. A utilização de
+        parâmetros será de forma posicional, uma vez que, como a maior parte
+        dos programas será curto, não são necessários parâmetros-chave, que
+        diminuiriam a capacidade de escrita do nosso código e o tornaria muito
+        extenso. Subprogramas não poderão ser utilizados como argumentos, uma
+        vez que acarretaria em uma queda de legibilidade para o programa.
+
+        \item
+        Como decidimos usar variáveis de referência em nossa linguagem, teremos
+        necessariamente passagem por referência, ou seja, o endereço do
+        argumento é passado para o subprograma e colocado na stack. Também
+        teremos passagem por valor com cópia, em que uma cópia do argumento é
+        criada na stack ao ser chamado o subprograma.
+
+        \item
+        Sim, ela utilizará o método de protótipo, onde os tipos dos parâmetros
+        são inclusos dentro da lista de parâmetros, e por meio deste o tipo de
+        um parâmetro é checado. Em C99 e C++, é possível evitar a checagem de
+        tipo para alguns parâmetros, porém essa funcionalidade não será
+        utilizada.
+
+        Um exemplo de prototipagem em nossa linguagem seria:
+        \begin{lstlisting}[language=C]
+            int function1 (int par1, float par2) {
+            }
+        \end{lstlisting}
+
+        Em C, usar reticências após um primeiro argumento causa evasão de
+        checagem de tipo. No exemplo seguinte, \emph{printf} checará apenas o
+        primeiro parâmetro. Após isso, tudo é permitido, permitindo que a
+        função possa imprimir qualquer tipo suportado pela sintaxe de
+        formatação implementada:
+        \begin{lstlisting}[language=C]
+        int printf(const char* format_string, (*@\ldots@*));
+        \end{lstlisting}
+
+        Decidimos incorporar o mesmo recurso com a mesma sintaxe em nossa
+        linguagem.
+
+        \item
+        Subprograma genérico é um tipo de subprograma que funciona para
+        diferentes tipos de entrada em diferentes ativações, é implementado com
+        funções de template, definindo um grupo de funções que pode ser gerado.
+        Cabe ao compilador decidir que versão será criada e utilizada
+        analisando os parâmetros de cada chamada.
+
+        Subprogramas por sobrecarga, por outro lado, baseiam-se em um grupo de
+        subprogramas de mesmo identificador declarado várias vezes no esqueleto
+        do programa. Uma função específica do grupo é usada dependendo dos
+        parâmetros quando a função é chamada.
+
+        Na nossa linguagem optamos por usar somente sobrecarga, ignorando
+        subprogramas genéricos. Essa decisão advém da maior legibillidade e
+        entendimento em se definir sobrecarga em detrimento da simplicidade e
+        facilidade de escrita obtida a partir de uma função de template, assim
+        julgando mais adequado aos usuários de nossa linguagem (iniciantes).
+
+        \item
+        Na compilação separada, partes do código podem ser compiladas em tempos
+        diferentes, desde que essas partes não possuam outras dependências
+        externas. Já na compilação independente, essa dependência não importa:
+        qualquer unidade de código pode ser compilada sem se preocupar com
+        dependências. Porém, isso faz com que unidades compiladas separadamente
+        não tenham verificação quanto à coerência de tipo. Caso a linguagem não
+        possua nenhum dos dois tipos de compilação citados, ou seja, compilação
+        única, ela se tornará virtualmente inútil para aplicações industriais.
+
+        Nossa linguagem terá compilação separada, pois essa compilação é
+        bastante prática, já que caso ocorra uma alteração no código, nem sempre
+        será necessário compilar todo o código. A escolha da compilação
+        separada ao invés da compilação independente se dá na falta de
+        verificação de coerência de tipo desta.
+
+        \item
+        Uma co-rotina é um tipo especial de subprograma. Ao invés de possuir
+        uma relação mestre-escravo entre o subprograma que chama e o
+        subprograma chamado, ambos estão em uma relação mais justa.
+
+        Um exemplo de co-rotina seria:
+        \begin{lstlisting}[language=C]
+            sub co1(){
+                ...
+                resume co2();
+                ...
+                resume co3();
+                ...
+            }
+        \end{lstlisting}
+
+        Na primeira chamada de \emph{co1}, a sua execução começa a partir da
+        sua primeira declaração, até que \emph{co2} seja retomado. Na próxima
+        vez que \emph{co1} seja retomado, sua execução continuará a partir da
+        primeira declaração após a retomada de \emph{co2}, até a retomada de
+        \emph{co2}. Na sua terceira retomada, \emph{co1} continuará da primeira
+        declaração após a retomada de \emph{co3}.
+
+        Apesar de co-rotinas serem uma funcionalidade relevante a uma
+        linguagem, a nossa linguagem possui um escopo educativo, portanto elas
+        não serão utilizadas, já que exigem um domínio mais avançado de
+        conceitos de linguagens de programação.
+
+    \end{enumerate}
+\end{document}
