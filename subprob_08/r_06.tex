@@ -1,3 +1,20 @@
-Anotações
+﻿Anotações
 - Quais são as estruturas que permitem que você guarde e oculte
 - namespaces (encapsulamento de nomes)
+
+Quando definimos tipos abstratos de dados, classes, módulos
+e pacotes, usamos de encapsulamentos  mínimos, ou seja, coleções pequenas
+de código e data logicamente relacionado, de modo a criar uma abstração 
+para o usuário. Essas coleções são chamadas de encapsulamento.
+Mas quando o código começa a crescer na casa das milhares de linhas de
+código, utilizamos esse conceito de forma expandida. 
+
+Em C, uma coleção de funções e data relacionadas podem ser colocadas em 
+um arquivo compilado separadamente, age como uma biblioteca.A Interface
+ para tal arquivo é colocada em um arquivo separado, chamado de header 
+file. Tal código pode ser incluído em um programa cliente através do 
+/emph{#include}.Esse tipo de encapsulamento gera algumas inseguranças,
+pois o código pode ser simplesmente copiado e colado, ignorando o header,
+o que funciona, mas acarreta uma perda da documentação de dependência. 
+
+Em C++ 
