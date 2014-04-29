@@ -1,9 +1,8 @@
-\enumerate{
-    \item
+\begin{enumerate}
         \item
-        \item No caso de tipos abstratos de dados:
+        No caso de tipos abstratos de dados:
 
-        Um \emph{Tipo abstrato de dado} tem a representação do tipo dos objetos
+        Um \emph{tipo abstrato de dado} tem a representação do tipo dos objetos
         ocultas para as unidades de programa que utilizam esse tipo. Dessa forma as
         únicas operações possíveis nesses objetos são aquelas que estão na
         definição do objeto.
@@ -18,10 +17,11 @@
 
         Na nossa linguagem, utilizaremos tipos abstratos de dados, presentes
         tanto no tipo float, quanto em tipos criados pelo usuário.
-        \item
-        \item No caso de pacotes:
 
-        Um \emph{Pacote} é como a implementação de módulo é chamada na
+        \item
+        No caso de pacotes:
+
+        Um \emph{pacote} é como a implementação de módulo é chamada na
         linguagem Ada. Nela, os cabeçalhos e corpos dos módulos podem ser
         separados.
 
@@ -29,5 +29,26 @@
         implementada semelhante à utilização de módulos em Ada, onde cabeçalho
         e corpo podem ser separados. Porém, na nossa implementação cabeçalho e
         corpo terão que estar no mesmo arquivo.
+
         \item
-}
+        No caso de classes:
+
+        Uma \emph{classe} é um \emph{template} extensível para a criação de
+        objetos. As classes podem ser instanciadas através de uma chamada para
+        o método construtor, uma subrotina responsável pela inicialização de
+        dados de objetos. As entidades declaradas como públicas podem ser
+        acessadas através dessas instâncias. De acordo com Sebesta, esta
+        maneira é mais limpa e direta que o encapsulamento em Ada.
+
+        Classes possuem membros de dados, que armazenam estado e informação, e
+        membros de subrotina, implementações de comportamento, também chamados
+        de métodos em linguagens orientadas a objeto. Além disso, membros de
+        dados podem ser categorizados em membros de classe, independentes de
+        instanciação e membros de instância, que podem assumir valores
+        diferentes por cada objeto. Para organizar o código e aumentar a
+        legibilidade, C++ permite separar a definição de uma classe e sua
+        implementação.
+
+        A diferença entre as classes das linguagens orientadas a objetos e
+        pacotes em Ada é que classes geram tipos.
+\end{enumerate}
