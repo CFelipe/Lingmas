@@ -1,4 +1,4 @@
-﻿Anotações
+Anotações
 - Quais são as estruturas que permitem que você guarde e oculte
 - namespaces (encapsulamento de nomes)
 
@@ -10,11 +10,11 @@ Mas quando o código começa a crescer na casa das milhares de linhas de
 código, utilizamos esse conceito de forma expandida. 
 
 Em C, uma coleção de funções e data relacionadas podem ser colocadas em 
-um arquivo compilado separadamente, age como uma biblioteca.A Interface
+um arquivo compilado separadamente, age como uma biblioteca. A Interface
  para tal arquivo é colocada em um arquivo separado, chamado de header 
-file. Tal código pode ser incluído em um programa cliente através do 
-/emph{#include}.Esse tipo de encapsulamento gera algumas inseguranças,
+file (arquivo de cabeçalho). Tal código pode ser incluído em um programa cliente através do 
+/emph{#include}. Esse tipo de encapsulamento gera algumas inseguranças,
 pois o código pode ser simplesmente copiado e colado, ignorando o header,
 o que funciona, mas acarreta uma perda da documentação de dependência. 
 
-Em C++ 
+Na nossa linguagem, nós utilizaremos o encapsulamento de C, pois possui tudo que é necessário na nossa linguagem, e não acreditamos que os usuários acabem cometendo tais erros de insegurança.
