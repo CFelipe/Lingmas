@@ -1,0 +1,93 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel} % Hifenização e dicionário
+\usepackage[left=3.00cm, right=2.00cm, top=3.00cm, bottom=2.00cm]{geometry}
+\usepackage{enumitem}
+\usepackage{longtable} % Dependência do longtabu
+\usepackage{tabu} % Para melhor criação de tabelas
+\usepackage{color} % Para coloração de códigos
+\usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
+\usepackage[breaklinks]{hyperref}
+
+\extrarowsep=2ex % Espaçamento interno das tabelas
+\tabulinesep=1ex % Espaçamento interno das tabelas
+
+\begin{document}
+
+\begin{center}
+\large \textbf{Subproblema 8} --- Abstrações --- Tabela
+\end{center}
+
+\bigskip
+
+\begin{longtabu}{| X |}
+    \hline
+    \begin{center}
+        \large \textbf{Lingmas} \linebreak
+        Projeto de uma linguagem de programação
+    \end{center}
+    \\ \hline
+
+    \begin{tabu}{ X | X }
+        \textbf{Dados} &
+        \textbf{Noções faltantes}
+        \\
+        \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[itemsep=.5ex,parsep=.0ex,after=\strut,leftmargin=15pt]
+            \item Módulos
+            \item Pacotes
+            \item Encapsulamento de construção
+            \item Encapsulamento de nomes
+        \end{itemize}
+        \end{minipage}
+        &
+        \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[itemsep=.5ex,parsep=.0ex,after=\strut,leftmargin=15pt]
+            \item Abstração
+            \item Tipos abstratos de dados
+            \item Classes
+            \item Arquivos de cabeçalho
+            \item Namespaces
+        \end{itemize}
+        \end{minipage}
+    \end{tabu}
+    \\ \hline
+
+    \textbf{Passos para a solução} \newline
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[itemsep=.5ex,parsep=.0ex,after=\strut,leftmargin=15pt]
+        \item
+        Leitura do material recomendado pelo professor
+        \item
+        Discussão em grupo sobre o assunto
+        \item
+        Uso da internet para uma pesquisa mais extensiva
+        \item
+        Compartilhamento de links e marcação de comentários oportunos em
+        documento compartilhado
+        \item
+        Resposta das questões propostas pelo professor
+        \item
+        Atualização do repositório com iterações incrementais de documentos
+    \end{itemize}
+    \end{minipage}
+    \\ \hline
+
+    \textbf{Resumo da solução} \newline
+    Foi feita a leitura do livro com discussões em grupo e com o professor.
+    Atentamo-nos às questões dos subproblemas e respondendo-as, percebemos como
+    se relacionavam com as características da nossa linguagem. Utilizamos a
+    planilha criada no subproblema 6 para auxílio das definições de
+    características deste subproblema.
+    \\ \hline
+
+    \textbf{Conclusões} \newline
+    Na realização desse trabalho, estudamos a importância de abstrações para as
+    linguagens de programação, a diferença entre módulos, pacotes e classes, os
+    conceitos de genericidade, construção de encapsulamento e encapsulamento de
+    nomes.
+    \\ \hline
+
+\end{longtabu}
+
+\end{document}
