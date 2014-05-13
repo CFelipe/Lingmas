@@ -1,0 +1,132 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel} % Hifenização e dicionário
+\usepackage[left=3.00cm, right=2.00cm, top=3.00cm, bottom=2.00cm]{geometry}
+\usepackage{enumitem} % Para itemsep etc
+\usepackage{longtable} % Dependência do longtabu
+\usepackage{tabu} % Para melhor criação de tabelas
+\usepackage{listings} % Para códigos
+\usepackage{lstautogobble} % Códigos indentados corretamente
+\usepackage{color} % Para coloração de códigos
+\usepackage{zi4} % Para fonte de códigos
+\usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
+\usepackage{graphicx}
+\usepackage{verbatim} % Para comentários
+\usepackage[breaklinks]{hyperref}
+
+% Um dia, talvez: http://linorg.usp.br/CTAN/macros/latex/contrib/minted/minted.pdf
+
+\tabulinesep=0.75ex % Espaçamento interno das tabelas
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\definecolor{graybox}{rgb}{0.9, 0.9, 0.9}
+
+\newcommand{\inlinecode}[1]{\textbf{\lstinline{#1}}}
+
+\usepackage{listings}
+\lstset{
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b
+}
+
+\begin{document}
+\begin{center}
+    \textsc{Universidade Federal do Rio Grande do Norte} \\
+    \textsc{Departamento de Informática e Matemática Aplicada}
+\end{center}
+
+\bigskip
+
+\begin{tabular}{@{}ll@{}}
+    \emph{Disciplina:} & DIM0437 --- Linguagens de Programação:
+                            Conceitos e Paradigmas \\
+    \emph{Docente:}    & Umberto Souza da Costa \\
+    \emph{Discentes:}  & Dogival Ferreira da Silva Junior \\
+                       & Felipe Cortez de Sá \\
+                       & Gabriel Sebastian von Conta \\
+                       & Phellipe Albert Volkmer \\
+                       & Vinícius Araújo Petch
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\large \textbf{Subproblema 9} --- Adaptação ao paradigma funcional
+\end{center}
+
+\section{Problema}
+    \subsection{Produto do problema}
+    O produto desta fase deve ser um documento especificando uma versão
+    funcional da linguagem originalmente definida pelo grupo. O documento deve
+    deixar evidentes as adaptações necessárias para que a linguagem migre de
+    paradigma.
+
+    \subsection{Questões}
+    \begin{enumerate}[leftmargin=*]
+        \item % r_01.tex
+        Quais são as características principais do paradigma funcional? Analise
+        e compreenda todos os conceitos deste paradigma antes de responder às
+        questões seguintes.
+
+        \item % r_02.tex
+        Quais diferenças existem entre as noções de variáveis dos paradigmas
+        imperativo e funcional? Qual é o impacto dessas diferenças no projeto
+        de uma linguagem? Qual é o impacto dessas diferenças na pragmática da
+        linguagem?
+
+        \item % r_03.tex
+        Quais características da linguagem originalmente projetada poderão
+        permanecer quando da mudanção para o paradigma funcional?
+
+        \item % r_04.tex
+        Quais características da linguagem originalmente projetada que
+        precisarão ser retiradas quando da mudança para o paradigma funcional?
+
+        \item % r_05.tex
+        Quais novas características poderão ser integradas à linguagem?
+
+        \item % r_06.tex
+        Dê exemplos de programas escritos na versão funcional de sua linguagem.
+
+    \end{enumerate}
+
+\section{Resoluções}
+    \begin{enumerate}[leftmargin=*]
+        \item
+        \input{r_01}
+
+        \item
+        \input{r_02}
+
+        \item
+        \input{r_03}
+
+        \item
+        \input{r_04}
+
+        \item
+        \input{r_05}
+
+        \item
+        \input{r_06}
+    \end{enumerate}
+\end{document}
