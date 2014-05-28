@@ -1,0 +1,239 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel} % Hifenização e dicionário
+\usepackage[left=3.00cm, right=2.00cm, top=3.00cm, bottom=2.00cm]{geometry}
+\usepackage{enumitem} % Para itemsep etc
+\usepackage{longtable} % Dependência do longtabu
+\usepackage{tabu} % Para melhor criação de tabelas
+\usepackage{listings} % Para códigos
+\usepackage{lstautogobble} % Códigos indentados corretamente
+\usepackage{color} % Para coloração de códigos
+\usepackage{zi4} % Para fonte de códigos
+\usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
+\usepackage{graphicx}
+\usepackage{verbatim} % Para comentários
+\usepackage[breaklinks]{hyperref}
+
+% Um dia, talvez: http://linorg.usp.br/CTAN/macros/latex/contrib/minted/minted.pdf
+
+\tabulinesep=0.75ex % Espaçamento interno das tabelas
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\definecolor{graybox}{rgb}{0.9, 0.9, 0.9}
+
+\newcommand{\inlinecode}[1]{\textbf{\lstinline{#1}}}
+
+\usepackage{listings}
+\lstset{
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b
+}
+
+\begin{document}
+\begin{center}
+    \textsc{Universidade Federal do Rio Grande do Norte} \\
+    \textsc{Departamento de Informática e Matemática Aplicada}
+\end{center}
+
+\bigskip
+
+\begin{tabular}{@{}ll@{}}
+    \emph{Disciplina:} & DIM0437 --- Linguagens de Programação:
+                            Conceitos e Paradigmas \\
+    \emph{Docente:}    & Umberto Souza da Costa \\
+    \emph{Discentes:}  & Dogival Ferreira da Silva Junior \\
+                       & Felipe Cortez de Sá \\
+                       & Gabriel Sebastian von Conta \\
+                       & Phellipe Albert Volkmer \\
+                       & Vinícius Araújo Petch
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\large \textbf{Subproblema 10} --- Adaptação ao paradigma lógico
+\end{center}
+
+\section{Problema}
+    \subsection{Produto do problema}
+    O produto desta fase deve ser um documento espeficando uma versão lógica da
+    linguagem imperativa definida pelo grupo. O documento deve deixar evidentes
+    as adaptações ncessárias para que a linguagem migre de paradigma.
+
+    \subsection{Questões}
+    \begin{enumerate}[leftmargin=*]
+        \item % r_01.tex
+        Quais são as características principais do paradigma lógico? Analise e
+        compreenda todos os conceitos deste paradigma antes de responder às
+        questões seguintes.
+
+        \item % r_02.tex
+        Quais diferenças existem entre as noções de variáveis dos paradigmas
+        imperativo e lógico? Qual é o impacto dessas diferenças no projeto de
+        uma linguagem? Qual é o impacto dessas diferenças na pragmática da
+        linguagem?
+
+        \item % r_03.tex
+        Quais características da linguagem imperativa originalmente projetada
+        poderão permanecer quando da mudança para o paradigma lógico?
+
+        \item % r_04.tex
+        Quais características da linguagem imperativa originalmente projetada
+        que precisarão ser retiradas quando da mudança para o paradigma lógico?
+
+        \item % r_05.tex
+        Quais novas características poderão ser integradas à linguagem?
+
+        \item % r_06.tex
+        Dê exemplos de programas escritos na versão lógica de sua linguagem.
+
+    \end{enumerate}
+
+\section{Resoluções}
+    \begin{enumerate}[leftmargin=*]
+        \item
+        Programação lógica é um paradigma de programação baseado em lógica
+        formal, utilizando inferência lógica para produzir resultados.
+        Linguagens utilizadas para programação lógica são chamadas linguagens
+        declarativas, pois programas escritos nelas consistem de declarações ao
+        invés de tarefas e estruturas de controle de fluxo. As declarações
+        tomam forma de proposições em lógica simbólica. A base das linguagens
+        lógicas é o cálculo de predicados.
+
+        O cálculo de predicados parte da análise de proposições, usando de uma
+        lógica simbólica. Nesse caso, proposições são objetos de nossa
+        linguagem (constantes ou variáveis) aplicadas a funções que relacionam
+        esses objetos. Por exemplo, em \inlinecode{Homem(Vinicius)},
+        \inlinecode{Homem} é uma função que relaciona o objeto
+        \inlinecode{Vinicius} definindo se ele é homem ou não. Caso ele seja
+        (fica ao encargo de quem está escrevendo o programa) essa proposição é
+        verdadeira, caso contrário, é falsa. É importante notar que proposições
+        não tem semântica intrínseca, somos nós que decidimos, ou seja, elas
+        significam o que nós quisermos que elas signifiquem.
+
+        Uma das características principais das linguagens lógicas são suas
+        semânticas declarativas. A ideia básica é que existe uma maneira
+        simples de determinar o significado de cada expressão, e não depende de
+        como a expressão pode ser usada para resolver um problema. Essas
+        semânticas são consideradas mais simples que as semânticas imperativas.
+
+        Programação em uma linguagem lógica é não-procedural, onde programas em
+        tal linguagem não especificam exatamente quais são as etapas para se
+        chegar a um resultado, mas que forma o resultado tem.
+
+        \item
+        No paradigma imperativo, variáveis são espaços de memória que alocam um
+        certo tipo de valor. Porém, no paradigma lógico, variáveis são
+        vinculadas a apenas um valor por meio da unificação, funcionando de
+        forma semelhante às variáveis no paradigma funcional. A diferença é
+        que, em caso de backtracking, variáveis podem ter seus valores
+        desvinculados.
+
+        Sem a ideia imperativa de variável, valores não podem ser guardados da
+        forma tradicional. Porém, operações onde valores são guardados e
+        repassados ainda podem ser feitas, a partir do cálculo de predicados. E
+        como o paradigma lógico se baseia nesse cálculo, a falta de variáveis
+        "imperativas" não possui impacto na linguagem.
+
+        \item
+        Tipos de variável, criação de tipos, strings (valores que não se
+        encaixam nos outros tipos de variável) serão demarcadas por aspas.
+        Verificação de tipo.  Identificadores de variável manterão a regra da
+        linguagem imperativa.  Operadores lógicos não são utilizados, porém os
+        operadores aritméticos serão mantidos. Curto-circuito.
+
+        \item
+        Como o paradigma lógico não utiliza estruturas de controle
+        (condicionais e laços são trabalhados com cláusulas e recursões),
+        nenhuma delas será mantida. Por causa do formato utilizado nas
+        linguagens lógicas, operadores lógicos não serão utilizados, onde as
+        cláusulas fazem tal papel. Já os operadores aritméticos serão mantidos.
+        Não teremos atribuição de valores a variáveis, ou declaração de
+        variáveis. Não teremos funções, já que predicados são suficientes para
+        suprir suas necessidades.
+
+        \item
+        Várias características serão semelhantes ou comparáveis ao Prolog. De
+        início, a linguagem sofrerá várias alterações para poder ser
+        considerada lógica, e com isso entra o uso de cálculo de predicados e o
+        backtracking, características fundamentais mencionadas anteriormente.
+        Tuplas e listas substituirão registros e arranjos, para facilitar no
+        trabalho com conjuntos e grupos de variáveis. Variáveis anônimas serão
+        representadas por \inlinecode{_}. Ao invés de utilizarmos
+        \inlinecode{:-}, que define as condições necessárias para que o
+        predicado do lado esquerdo seja verdadeira, nós utilizaremos o símbolo
+        \inlinecode{:}. No lugar do \inlinecode{,}, utilizado no Prolog para
+        delimitar partes do corpo de uma fórmula, nós utilizaremos a
+        palavra-chave \inlinecode{and}.
+
+        Negação será representada pela palavra-chave \inlinecode{not},
+        substituindo o \inlinecode{!} da linguagem original. Um programa será
+        dividido em domínios, predicados, cláusulas, e a consulta. Essas etapas
+        serão delimitadas pelas palavras-chave domains, predicates, clauses e
+        goal, respectivamente, com utilização de chaves (\inlinecode{\{} e
+        \inlinecode{\}}). Os domínios serão as variáveis criadas para a
+        execução do programa. Na área de predicados serão declarados protótipos
+        dos procedimentos utilizados no programa. Em cláusulas, serão
+        declaradas os fatos e regras do programa, e na consulta procedimentos
+        serão examinados a partir dos fatos (valores absolutos) e regras
+        (condicionais) das cláusulas. A palavra-chave break terá a função de
+        cut do símbolo \inlinecode{!}, utilizado no Prolog. Para podermos
+        representar laços, serão utilizadas recursões, com auxílio do break ou
+        de uma regra que não continue a recursão (ou comece outra). Os
+        parâmetros de um procedimento servem tanto como parâmetros de saída
+        quanto como parâmetros de entrada.
+
+        \item
+        O exemplo seguinte retorna a diferença entre duas listas:
+
+        \begin{lstlisting}[language=Prolog]
+            domains {
+                lint = integer *;
+            }
+
+            predicates {
+                diferenca(lint, lint, lint)
+                pertence(int,lint).
+                remove(int,lint,lint).
+            }
+
+            clauses {
+                pertence(X,[X|_]): break;
+                pertence(X,[_|L]): pertence(X,L);
+                remove(X,[X|L],L): break;
+                remove(X,[Y|L1],[Y|L2]): remove(X,L1,L2);
+                diferenca([],_,[]): break;
+                diferenca(L,[],L): break;
+                diferenca(L1,[X2|L2],L3): pertence(X2,L1) and
+                                             remove(X2,L1,LAUX) and
+                                             diferenca(LAUX,L2,L3) and
+                                             break;
+                diferenca(L1,[null|L2],L3): diferenca(L1,L2,L3);
+            }
+
+            goal {
+                diferenca([1,2,7,3],[1,2,4,3],L);
+            }
+        \end{lstlisting}
+
+    \end{enumerate}
+\end{document}
