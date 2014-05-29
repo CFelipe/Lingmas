@@ -1,0 +1,38 @@
+<program>       -> <constants> <stmts>
+<stmts>         -> {<stmt> ';' }
+<stmt>          -> <assign_stmt> | <if_stmt> | <while_stmt> | <for_stmt> |
+                   <switch_stmt> | <expr> | <block> | <return> | break
+
+<except>        -> try <block> catch <block>
+
+<assign_stmt>   -> <id> '=' <expr>
+<if_stmt>       -> if     '(' <expression> ')' <block> { else <block> }
+<while_stmt>    -> while  '(' <expression> ')' <block>
+<for_stmt>      -> for    '(' <stmt> ',' <expression> ',' <assign_stmt> ')' <block>
+<switch_stmt>   -> switch '(' <expression> ')' '{' <case_list> '}'
+<case_list>     -> { case <valor???> ':' <block> } [ default ':' <block>]
+
+<function>      -> function <id> '(' <parameters_list> ')' '{' <stmts> '}'
+
+<constants>     -> { <id> <value> ;}
+
+<arit_op>       -> '+' | '-' | '*' | '/'
+<relat_op>      -> '>' | '<' | '>=' | '<=' | '==' | '!='
+<log_op>        -> '&&' | '||'
+
+como diferenciar unário e binário? precisa?
+
+<block>         -> '{' <stmts> '}'
+
+<id>            -> { <letter> } [ { <letter> | <number> | '_' } ]
+
+<return>        -> return [ <id> ]
+<exp>           -> ( <id> | <valor???> ) ( <arit_op> | <relat_op> ) ( <id> | <valor???> )
+
+---
+
+como?:
+
+<cast>?
+<struct>        -> <tipo> [ '=' <valor???>
+<enum>?

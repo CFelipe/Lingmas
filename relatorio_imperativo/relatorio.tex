@@ -1,0 +1,84 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel} % Hifenização e dicionário
+\usepackage[left=3.00cm, right=2.00cm, top=3.00cm, bottom=2.00cm]{geometry}
+\usepackage{enumitem} % Para itemsep etc
+\usepackage{longtable} % Dependência do longtabu
+\usepackage{tabu} % Para melhor criação de tabelas
+\usepackage{listings} % Para códigos
+\usepackage{lstautogobble} % Códigos indentados corretamente
+\usepackage{color} % Para coloração de códigos
+\usepackage{inconsolata} % Para fonte de códigos
+\usepackage{parskip} % Linha em branco entre parágrafos em vez de recuo
+\usepackage{graphicx}
+\usepackage{verbatim} % Para comentários
+\usepackage[breaklinks]{hyperref}
+
+% Um dia, talvez: http://linorg.usp.br/CTAN/macros/latex/contrib/minted/minted.pdf
+
+\tabulinesep=0.75ex % Espaçamento interno das tabelas
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\definecolor{graybox}{rgb}{0.9, 0.9, 0.9}
+
+\newcommand{\ic}[1]{\textbf{\lstinline{#1}}}
+
+\usepackage{listings}
+\lstset{
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b
+}
+
+\begin{document}
+\includegraphics[width=2.5cm]{ufrn}
+
+\begin{center}
+    \textsc{Universidade Federal do Rio Grande do Norte} \\
+    \textsc{Departamento de Informática e Matemática Aplicada}
+\end{center}
+
+\bigskip
+
+\begin{tabular}{@{}ll@{}}
+    \emph{Disciplina:} & DIM0437 --- Linguagens de Programação:
+                            Conceitos e Paradigmas \\
+    \emph{Docente:}    & Umberto Souza da Costa \\
+    \emph{Discentes:}  & Dogival Ferreira da Silva Junior \\
+                       & Felipe Cortez de Sá \\
+                       & Gabriel Sebastian von Conta \\
+                       & Phellipe Albert Volkmer \\
+                       & Vinícius Araújo Petch
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\large \textbf{Relatório de uma linguagem de paradigma imperativo \\ Lingmas}
+\end{center}
+
+\bigskip
+
+\tableofcontents
+
+\input{conteudo}
+
+\end{document}
