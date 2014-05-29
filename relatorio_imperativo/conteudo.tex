@@ -1,5 +1,3 @@
-% Revisão de 10:22
-
 \section{Introdução}
 Neste trabalho estruturamos o produto de resposta de cada subproblema provido
 durante o semestre referente a nossa linguagem, alcançado com discussões tanto
@@ -265,7 +263,9 @@ No caso acima todas as atribuições serão válidas, graças a sobrecarga.
 
 \begin{lstlisting}
     int a, b, c, d;
-    if(a < b && c < d) then { <stmts> }
+    if(a < b && c < d) {
+        ...
+    }
 \end{lstlisting}
 
 No caso acima, caso a afirmativa \ic{a < b} seja falsa, o compilador sequer
@@ -412,3 +412,37 @@ por usar dessa forma pois o conceito é simples e útil, e não temos como
 objetivo dar suporte ao desenvolvimento de aplicações muito grandes. Pelo mesmo
 motivo, não teremos encapsulamento de nomes, pois os programas não devem ser
 grandes o suficiente para poder causar conflito de nomes.
+
+\section{BNF para a linguagem}
+\begin{lstlisting}
+<program>       ::= <stmts>
+<stmts>         ::= { <stmt>";" }
+<stmt>          ::= <ctrl> | <func> | <attr> | <exp> | <condt>
+<func>          ::= <func_type> <id> "(" <prmts> ")"
+                    "{" <stmts> <return> {<stmts> <return>}"}"
+<ctrl>          ::= <condt> | <loop>
+<condt>         ::= <if> | <switch>
+<if>            ::= "if" "(" <exp> ")" "{" <stmts> "}" [ "else" "{" <stmts> "}" ]
+<switch>        ::= "switch" "(" <id> ")" "{" <case_list> "}"
+<case_list>     ::= "case" <number> ":" <stmts> [ "break" ] | <case_list>
+<loop>          ::= <while> | <for> | <do_while>
+<while>         ::= "while" "("<boolean_exp>")" "{" <stmts> "}"
+<for>           ::= "for" "(" <attr> ";" <boolean_exp> ";" <exp> ")" "{" <stmts> "}"
+<do_while>      ::= "do" "{" <stmts> "}" "while" "(" <exp> ")"
+<trmt>          ::= <return> | "break"
+<return>        ::= "return" <id> ";"
+<attr>          ::= <id> "=" <exp> ";"
+<exp>           ::= <boolean_exp> | <arit_exp>
+<id>            ::= <char> { <id> }
+<arit_exp>      ::= <arit_exp> <binary_op> <arit_exp> | <id><unary_op> | <id>
+
+<binary_op>     ::= + | - | * | /
+<unary_op>      ::= ++ | --
+<boolean_exp>   ::= <func> | <exp> <rel_op> <exp>|<id>
+<rel_op>        ::= < | <= | >= | > | != | ==
+<var_dec>       ::= <type> <id>
+<type>          ::= "int" | "float" | "string" | "bool"
+<letter>        ::= a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | x | w | y | z
+<digit>         ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<number>        ::= <digit> | { <digit> }
+\end{lstlisting}
