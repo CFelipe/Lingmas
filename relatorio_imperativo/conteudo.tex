@@ -25,6 +25,9 @@ didático, tenta se aproximar das linguagens imperativas (Pascal, C), e foca em
 uma aproximação mais abstrata.
 
 \section{Descrição da linguagem}
+
+\section{Variáveis e tipos}
+
 Os tipos primitivos da nossa linguagem serão os inteiros (\ic{int}), ponto flutuante
 (\ic{float}), booleano (\ic{bool}), e cadeia de caracteres (\ic{string}). O tipo primitivo
 char é "substituível" por uma string de 1 caractere, portanto desnecessário, já
@@ -128,15 +131,11 @@ funcionamento e a estruturação dos tipos. Seguindo esse mesmo intuito, não
 possuiremos coerção em nossa linguagem. Há presença de tipos derivados (enum,
 struct, entre outros).
 
-\subsection{Sintaxe}
-\subsection{Semântica estática}
-\subsection{Semântica dinâmica}
-
-\section{Variáveis e tipos}
 Apelidos são gerados quando se têm variáveis de referência, já que diversas
 variáveis podem ter acesso ao mesmo espaço de memória. Como a nossa linguagem
 não possui ponteiros ou \emph{unions}, então não teremos problemas com apelidos.
 
+\section{Vinculação de variáveis, informações de tipo}
 
 A vinculação de tipo será estática com declaração explícita, onde há a listagem
 do nome das variáveis e especificação de tipo, acostumando os usuários da
@@ -166,8 +165,6 @@ equivalência por nome, com exceção de structs, que terão equivalência por
 estrutura, pois estes terão mais problemas com a restrição da equivalência por
 nome.
 
-\section{Vinculação de variáveis}
-
 \section{Escopo}
 Para a escolha do escopo, decidimos utilizar o escopo estático, apesar das
 suas desvantagens, como em casos em que permite mais acesso a variáveis e
@@ -187,6 +184,8 @@ necessidade de um grande número de alterações ou uma estruturação bem defin
 Utilizamos também o armazenamento de variavéis do tipo stack-dinâmico, onde a
 amarração de espaço são criadas quando a variável é declarada, mas o tipo é
 estaticamente amarrado.
+
+\section{Estruturas de controle, operadores e expressões}
 
 Subprogramas e estruturas de controle (repetições e condicionais) possuirão
 blocos, que serão delimitados por chaves, estando aninhados dentro do bloco
@@ -213,7 +212,6 @@ será vista apenas pelo bloco que a alocou e, por causa do escopo estático, seu
 blocos internos. Com isso, o espaço da variável composta alocado por um bloco
 não poderá ser utilizado por blocos externos ou blocos que chamarem este.
 
-\section{Estruturas de controle}
 Nós seguiremos a associação da esquerda para a direita, com exceção do operador
 de exponenciação, que seguirá a associação da direita para a esquerda. Nós
 utilizaremos os parênteses para atribuir precedência máxima à expressão entre
